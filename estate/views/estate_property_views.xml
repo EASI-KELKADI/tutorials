@@ -40,6 +40,7 @@
                     <group>
                         <field name="expected_price"/>
                         <field name="selling_price" readonly="1"/>
+                        <field name="best_price" readonly="1"/>
                     </group>
                 </group>
 
@@ -49,9 +50,12 @@
                             <field name="description"/>
                             <field name="bedrooms"/>
                             <field name="living_area"/>
+                            <field name="total_area" readonly="1"/>
                             <field name="facades"/>
                             <field name="garage"/>
                             <field name="garden"/>
+                        </group>
+                        <group>
                             <field name="garden_area"/>
                             <field name="garden_orientation"/>
                         </group>
@@ -62,6 +66,8 @@
                                 <field name="price"/>
                                 <field name="partner_id"/>
                                 <field name="status"/>
+                                <field name="validity"/>
+                                <field name="date_deadline"/>
                             </list>
                         </field>
                     </page>
