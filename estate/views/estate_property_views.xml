@@ -26,6 +26,11 @@
     <field name="model">estate.property</field>
     <field name="arch" type="xml">
         <form string="Estate Property">
+            <header>
+                <button name="action_sold" type="object" string="Sold" class="btn-primary"/>
+                <button name="action_cancel" type="object" string="Cancel" class="btn-secondary"/>
+                <field name="state" widget="statusbar" readonly="1"/>
+            </header>
             <sheet>
                 <group>
                     <group>
@@ -66,9 +71,20 @@
                                 <field name="price"/>
                                 <field name="partner_id"/>
                                 <field name="status"/>
+                                <button name="action_accept" type="object" string="Accept" icon="fa-check"/>
+                                <button name="action_refuse" type="object" string="Refuse" icon="fa-times"/>
                                 <field name="validity"/>
                                 <field name="date_deadline"/>
                             </list>
+                            <form>
+                                <group>
+                                    <field name="price"/>
+                                    <field name="partner_id"/>
+                                    <field name="status" readonly="1"/>
+                                    <field name="validity"/>
+                                    <field name="date_deadline"/>
+                                </group>
+                            </form>
                         </field>
                     </page>
                     <page string="Other info">
@@ -78,6 +94,10 @@
                         </group>
                     </page>
                 </notebook>
+                <footer>
+                    <button name="action_sold" type="object" string="Mark as Sold" class="btn-primary"/>
+                    <button name="action_cancel" type="object" string="Cancel" class="btn-secondary"/>
+                </footer>
             </sheet>
         </form>
     </field>

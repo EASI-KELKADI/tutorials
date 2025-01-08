@@ -1,5 +1,6 @@
 from datetime import timedelta
 from odoo import models, fields,api
+from odoo.exceptions import UserError
 
 class EstateProperty(models.Model):
     _name = 'estate.property'
@@ -69,11 +70,11 @@ class EstateProperty(models.Model):
     def action_sold(self):
         for record in self:
             if record.state == 'canceled':
-                raise ValueError("Canceled")
+                raise UserError("Canceled")
             record.state = 'sold'
 
     def action_cancel(self):
         for record in self:
             if record.state == 'sold':
-                raise ValueError("Sold")
+                raise UserError("Sold")
             record.state = 'canceled'
