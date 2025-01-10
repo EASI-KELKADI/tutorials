@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Define a Kanban view for the estate.property model -->
+    <record id='estate_property_kanban_view' model='ir.ui.view'>
+        <field name='name'>estate.property.kanban</field>
+        <field name='model'>estate.property</field>
+        <field name='arch' type='xml'>
+            <kanban default_group_by='property_type_id' no_drag_drop='1'>
+                <field name='state'/>
+                <field name='best_price'/>
+                <field name='selling_price'/>
+                <field name='tag_ids'/>
+                <templates>
+                    <t t-name='kanban-box'>
+                        <div class='oe_kanban_global_click'>
+                            <div t-if="record.state.raw_value == 'sold'" class="oe_tag oe_inline" style="color: #FF0000; padding: 3px 6px; font-weight: bold; display: inline-block; float: right; text-align: right;">
+                                SOLD
+                            </div>
+                            <div>
+                                <field name='name' style='font-weight: bold;'/>
+                            </div>
+                            <div>
+                                Expected price: <field name='expected_price'/>
+                            </div>
+                            <div t-if="record.state.raw_value == 'offer_received'">
+                                Best offer: <field name='best_price'/>
+                            </div>
+                            <div t-if="record.state.raw_value == 'offer_accepted'">
+                                Selling price: <field name='selling_price'/>
+                            </div>
+                            <div>
+                                <field name='tag_ids' widget='many2many_tags' options="{'color_field': 'color'}"/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+</odoo>
