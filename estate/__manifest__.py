@@ -3,7 +3,7 @@
     'version': '1.0',
     'depends': ['base'],
     'category': 'Tutorials',
-    'author': 'Your Name',
+    'author': 'Kelkadi',
     'website': 'https://www.example.com',
     'description': 'Module de test',
     'data': [
